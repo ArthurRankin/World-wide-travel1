@@ -5,12 +5,19 @@ import Header from './components/Header.js';
 import PrettyPic from './components/BodyImage.js';
 import Footer from './components/Footer.js';
 import pic from './images/pretty_picture.jpg';
+import Guides from './components/Guides';
+import BookInfo from './components/BookInfo';
+
 
 
 
 
 class Application extends React.Component {
+    
     render() {
+
+          
+
 
         let trips = {
             trip1:"https://www.tripadvisor.com/Tourism-g186485-Scotland-Vacations.html", 
@@ -23,7 +30,9 @@ class Application extends React.Component {
             <div>
                 <Header title="World Wide Travel, Inc"/>
                 <PrettyPic pic={pic}/>
+                <Guides guides={BookInfo} />
                 <Footer trips={trips} />
+
             </div>
         
         )
