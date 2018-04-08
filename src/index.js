@@ -1,23 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Header from './Header.js';
-import PrettyPic from './BodyImage.js';
-import Footer from './Footer.js';
+import Header from './components/Header.js';
+import PrettyPic from './components/BodyImage.js';
+import Footer from './components/Footer.js';
 import pic from './images/pretty_picture.jpg';
+import Guides from './components/Guides';
+import BookInfo from './components/BookInfo';
+
+
 
 
 
 class Application extends React.Component {
+    
     render() {
+
+          
+
+
+        let trips = {
+            trip1:"https://www.tripadvisor.com/Tourism-g186485-Scotland-Vacations.html", 
+            trip2:"https://www.go-today.com/paris.aspx", 
+            trip3:"http://www.sunnylandtours.com/middle-east-and-africa/egypt", 
+            trip4:"https://www.travelchannel.com/destinations/us/tn"
+        }
+        
         return(
             <div>
                 <Header title="World Wide Travel, Inc"/>
                 <PrettyPic pic={pic}/>
-                <Footer trip="https://www.tripadvisor.com/Tourism-g186485-Scotland-Vacations.html 
-                            https://www.go-today.com/paris.aspx 
-                            http://www.sunnylandtours.com/middle-east-and-africa/egypt 
-                            https://www.travelchannel.com/destinations/us/tn" />
+                <Guides guides={BookInfo} />
+                <Footer trips={trips} />
+
             </div>
         
         )
