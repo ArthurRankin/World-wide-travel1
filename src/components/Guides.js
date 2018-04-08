@@ -1,6 +1,5 @@
 import React from 'react';
 import './guides.css';
-import BookInfo from './BookInfo';
 
 
 
@@ -45,16 +44,16 @@ import BookInfo from './BookInfo';
   
 
 let Guides = (props) => {
-
         const listItems = guides.map((book) =>
-        <div key={book.price} className="card container mt-2" style={{width: 18 + 'rem'}}>
+        <div key={book.price} className="card container mt-2 mb-2" style={{width: 18 + 'rem'}}>
           <div key={book.price} className="card-body">
             <h5 key={book.title} className="card-title">{book.title}</h5>
-            <p key={book.type} className="card-text">{book.type}</p>
-            <p key={book.price} className="card-text">{book.price}</p>
+            <p key={book.type} className="card-text">Type: {book.type}</p>
+            <p key={book.price} className="card-text">Price: {book.price}</p>
           </div>
         </div>
         );
+
 
         return (
           <div className="container d-flex flex-column text-center justify-conent-center mt-5">
