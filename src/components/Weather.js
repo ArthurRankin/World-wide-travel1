@@ -5,12 +5,12 @@ import './weather.css';
 
 
 
-function WeatherTemplate (props) {
+function WeatherComponent (props) {
     return (
         <div className="text-center">
             <h4>Temperature for your area:</h4>
             <p key={props.name}>
-                {props.temp}
+                {props.name}: {props.temp}
             </p>
         </div>
     )
@@ -38,11 +38,11 @@ class Weather extends React.Component {
 
     getWeather() {
         console.log("getWeather");
-        fetch("http://api.openweathermap.org/data/2.5/forecast?zip=37010,us&units=imperial&APPID=aeace81c0d72e15b17ad94207544e2f8")
+        fetch("http://api.openweathermap.org/data/2.5/forecast?zip=37210,us&units=imperial&APPID=aeace81c0d72e15b17ad94207544e2f8")
         .then(data => data.json())
         .then(
             (result) => {
-                console.log('result', result);
+                console.log('result from promise', result);
                 this.setState({
                     weatherLoaded: true,
                     objResult: result,
@@ -56,7 +56,7 @@ class Weather extends React.Component {
         }
 
 
-        
+
     render() {
         const { error, weatherLoaded, objResult } = this.state;
 
@@ -75,9 +75,13 @@ class Weather extends React.Component {
         )
         } else {
         return(
-            <WeatherTemplate
+        <div>
+
+            <WeatherComponent
             name={objResult.city.name}
             temp={objResult.list[0].main.temp} />
+
+        </div>
             )
         }
     }

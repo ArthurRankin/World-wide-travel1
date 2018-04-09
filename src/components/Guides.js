@@ -47,7 +47,7 @@ let Guides = (props) => {
         const listItems = guides.map((book) =>
         <div key={book.price} className="card container mt-2 mb-2" style={{width: 18 + 'rem'}}>
           <div key={book.price} className="card-body">
-            <h5 key={book.title} className="card-title">{book.title}</h5>
+            <h5 key={book.title} className="card-title">" {book.title} "</h5>
             <p key={book.type} className="card-text">Type: {book.type}</p>
             <p key={book.price} className="card-text">Price: {book.price}</p>
           </div>
