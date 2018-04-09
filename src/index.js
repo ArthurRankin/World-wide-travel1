@@ -7,6 +7,7 @@ import Footer from './components/Footer.js';
 import pic from './images/pretty_picture.jpg';
 import Guides from './components/Guides';
 import BookInfo from './components/BookInfo';
+import Weather from './components/Weather.js';
 
 
 
@@ -29,6 +30,7 @@ class Application extends React.Component {
         return(
             <div>
                 <Header title="World Wide Travel, Inc"/>
+                <Weather />
                 <PrettyPic pic={pic}/>
                 <Guides guides={BookInfo} />
                 <Footer trips={trips} />
