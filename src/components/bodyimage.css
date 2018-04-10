@@ -1,8 +1,4 @@
-.pic-text {
-    font-size:2em;
-    position: fixed;
-    top: 25%;
-    left: 36%;
-    z-index: 1;
-    color: white;
-  }
+img {
+  width: 100%;
+  height: 10%;
+}

@@ -4,9 +4,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header.js';
 import PrettyPic from './components/BodyImage.js';
 import Footer from './components/Footer.js';
-import pic from './images/pretty_picture.jpg';
+import pic from './images/body-pic3.jpg';
 import Guides from './components/Guides';
-import BookInfo from './components/BookInfo';
 import Weather from './components/Weather.js';
 
 
@@ -32,7 +31,7 @@ class Application extends React.Component {
                 <Header title="World Wide Travel, Inc"/>
                 <Weather />
                 <PrettyPic pic={pic}/>
-                <Guides guides={BookInfo} />
+                <Guides />
                 <Footer trips={trips} />
 
             </div>
