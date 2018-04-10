@@ -7,7 +7,7 @@ function WeatherInPut(props) {
     return(
         <div className="container d-flex justify-content-center input-group input-group-sm mb-5 w-25">
             <span>
-                <input id="input-field" type="text" placeholder="Enter Area Zipcode" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" /> 
+                <input id="input-field" type="text" placeholder="Enter Area Zipcode" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  /> 
             </span>
             
         
@@ -37,7 +37,7 @@ function WeatherOutPut (props) {
                     {props.name}: {props.temp}
                 </p>
                 <div className='d-flex justify-content-center mb-5'>
-                    <input id="input-field" type="text" className="w-25 form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" /> 
+                    <input id="input-field" type="text" className="w-25-lg w-100-sm form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  /> 
 
                     <div className="input-group-prepend">
                         <span className="input-group-text" id="inputGroup-sizing-sm" onClick={() => { props.showClicked() }}>Enter
@@ -71,15 +71,15 @@ class Weather extends React.Component {
     }
 
 
-    showClicked() {
+    showClicked(event) {
         let val = document.getElementById('input-field').value
         this.setState({
             value: val,
             showResult:true
         }, this.getWeather(val))
-
     }
 
+  
 
 
 
