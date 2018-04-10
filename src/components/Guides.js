@@ -1,5 +1,10 @@
 import React from 'react';
 import './guides.css';
+import {
+  BrowserRouter as Router,
+  Link,
+  Route 
+} from 'react-router-dom'
 
 
 
@@ -41,28 +46,66 @@ import './guides.css';
       "price": 13.49
     }]
 
-  
+    function Topics () {
+      return (
+        <h1>
+          TOPICS
+        </h1>
+      )
+    }
 
-let Guides = (props) => {
-        const listItems = guides.map((book) =>
-        <div key={book.price} className="card container mt-2 mb-2" style={{width: 18 + 'rem'}}>
-          <div key={book.price} className="card-body">
-            <h5 key={book.title} className="card-title">" {book.title} "</h5>
-            <p key={book.type} className="card-text">Type: {book.type}</p>
-            <p key={book.price} className="card-text">Price: {book.price}</p>
-          </div>
+  let GuideTemplate = () => {
+    const listItems = guides.map((book) =>
+      <div key={book.price} className="card container mt-2 mb-2" style={{width: 18 + 'rem'}}>
+        <div key={book.price} className="card-body">
+          <h5 key={book.title} className="card-title">" {book.title} "</h5>
+          <p key={book.type} className="card-text">Type: {book.type}</p>
+          <p key={book.price} className="card-text">Price: {book.price}</p>
         </div>
-        );
+      </div>
+    )
+    return (
+      <div className="d-flex flex-wrap container">
+        {listItems}
+      </div>
+    )
+  }
 
+  let Home = () => {
+    return (
+      <h1>
+        HOME
+      </h1>
+    )
+  }
 
-        return (
-          <div className="container d-flex flex-column text-center justify-conent-center mt-5">
-            <h3>Guide Books</h3>
-            <div className="container d-flex flex-wrap justify-conent-center mt-5">
-                {listItems}
+  class Guides extends React.Component {
+    render() {
+      return (
+        <Router>
+          <div>
+            <ul className="nav justify-content-center">
+              <li className="nav-item">
+                <Link className="nav-link active" to='/'>Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to='/all-guides'>All Guides</Link>
+              </li>
+            </ul>
+
+            <hr />
+            <div className="text-center">
+              <div>
+                <Route exact path='/' component={Home} />
+              </div>
+              <div className="d-dlex justify-content-center">
+                <Route  path='/all-guides' component={GuideTemplate} />
+              </div>
             </div>
           </div>
-        );
-}
+        </Router>
+      )
+    }
+  }
 
 export default Guides;
