@@ -46,14 +46,18 @@ import { BrowserRouter, Route, Link, NavLink } from 'react-router-dom';
 
 
 
-    let Nav = () => {
+
+
+
+
+    let Nav = (props) => {
       return(
           <ul className="nav justify-content-center">
               <li className="nav-item">
-                  <NavLink className="nav-link" to="/">Home</NavLink>
+                  <NavLink className="nav-link text-light" to="/">Home</NavLink>
               </li>
               <li className="nav-item">
-                  <NavLink className="nav-link" to="/all-guides">All Guides</NavLink>
+                  <NavLink  className="nav-link text-light" to="/all-guides">All Guides</NavLink>
               </li>
             
 
@@ -69,45 +73,41 @@ import { BrowserRouter, Route, Link, NavLink } from 'react-router-dom';
 
 
 
-let GuidePage = ({ match }) => {
-  console.log('match', match);
-  const guide = guides[match.params.index]
-  return(
-    <div>
-
-        <div className="card text-center">
-            <div className="card-body">
-                <h5 className="card-title">{guide.title}</h5>
-                <p className="card-text">Type: {guide.type}</p>
-                <p className="card-text">Price: {guide.price}</p>
-            </div>
-        </div>
-
-    </div>
+let GuidePage = (props) => {
+  console.log(this.location);
+return(
+  <div>
+      <div className="card text-center bg-white">
+          <div className="card-body">
+              
+          </div>
+      </div>
+  </div>
   )}
 
-
-
-let AllGuides = ({ match }) => {
-  const listItems = guides.map((book, index) =>
-  <div key={index} className="card container mt-2 mb-2" style={{width: 18 + 'rem'}}>
+  
+  let AllGuides = (props) => {
+    const listItems = guides.map((book, index) =>
+    <div key={index} className="card container mt-2 mb-2 bg-white" style={{width: 18 + 'rem'}}>
     <div className="card-body">
       <h5 className="card-title">" {book.title} "</h5>
       <p className="card-text">Type: {book.type}</p>
       <p className="card-text">Price: {book.price}</p>
-      <button><Link to={`${match.path}/guide-page/${index}`}>Guide Info</Link></button> 
+      <button><Link to={{ pathname: '/guide-page', query: {title: book.title} }}>Guide Info</Link></button>
     </div>
   </div>
   );
   return (
-    <div className="container d-flex flex-column text-center justify-conent-center mt-5">
-      <h3>Guide Books</h3>
-      <div className="container d-flex flex-wrap justify-conent-center mt-5">
+    <BrowserRouter>
+    <div className="container d-flex flex-column text-center justify-conent-center mt-5 ">
+      <h3 className="text-light">Guide Books</h3>
+      <div className="container d-flex flex-wrap justify-conent-center  mt-5">
           {listItems}
       </div>
 
-      <Route path={`${match.path}/guide-page/:index`} component={GuidePage} />
+      
     </div>
+    </BrowserRouter>
   );
 }
 
@@ -116,33 +116,27 @@ let AllGuides = ({ match }) => {
 
 let Home = () => {
   return(
-    <div className="container">
-        <div className="text-center">
+    <div className="container mt-5">
+        <div className="text-center text-light">
             <h1>HOME</h1>
         </div>
     </div>
 )}
   
 
+
+
 class Guides extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      allGuides: false,
-      guidePage: false
-    }
-  }
-
-
-
-
 render() {
+
   return(
     <BrowserRouter>
-      <div className="container">
+      <div className="container ">
         <div className="d-flex flex-column">
+
           <Nav />
+
         </div>
       </div>
     </BrowserRouter>
