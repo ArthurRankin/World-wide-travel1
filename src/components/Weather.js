@@ -37,7 +37,7 @@ function WeatherOutPut (props) {
                     {props.name}: {props.temp}
                 </p>
                 <div className='d-flex justify-content-center mb-5'>
-                    <input id="input-field" type="text" className="w-25 w-100-sm form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  /> 
+                    <input id="input-field" type="text" className="w-25 form-control" placeholder="Enter Another Area Zipcode" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  /> 
 
                     <div className="input-group-prepend">
                         <span className="input-group-text" id="inputGroup-sizing-sm" onClick={() => { props.showClicked() }}>Enter

@@ -125,6 +125,20 @@ let Home = () => {
   
 
 
+  class Guides extends React.Component {
+    render() {
+      return (
+        <Router>
+          <div>
+            <ul className="nav justify-content-center">
+              <li className="nav-item">
+                <Link className="nav-link active" to='/'>Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to='/all-guides'>All Guides</Link>
+              </li>
+            </ul>
+
 
 class Guides extends Component {
 
@@ -142,6 +156,7 @@ render() {
     </BrowserRouter>
   )}
 }
+
 
 
 
