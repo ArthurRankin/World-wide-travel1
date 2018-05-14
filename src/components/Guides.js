@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { Component} from 'react';
 import './guides.css';
-import {
-  BrowserRouter as Router,
-  Link,
-  Route 
-} from 'react-router-dom'
+import { BrowserRouter, Route, Link, NavLink } from 'react-router-dom';
+// import Nav from './Nav.js';
+
 
 
 
@@ -46,38 +44,86 @@ import {
       "price": 13.49
     }]
 
-    function Topics () {
-      return (
-        <h1>
-          TOPICS
-        </h1>
-      )
-    }
 
-  let GuideTemplate = () => {
-    const listItems = guides.map((book) =>
-      <div key={book.price} className="card container mt-2 mb-2" style={{width: 18 + 'rem'}}>
-        <div key={book.price} className="card-body">
-          <h5 key={book.title} className="card-title">" {book.title} "</h5>
-          <p key={book.type} className="card-text">Type: {book.type}</p>
-          <p key={book.price} className="card-text">Price: {book.price}</p>
+
+
+
+
+
+    let Nav = (props) => {
+      return(
+          <ul className="nav justify-content-center">
+              <li className="nav-item">
+                  <NavLink className="nav-link text-light" to="/">Home</NavLink>
+              </li>
+              <li className="nav-item">
+                  <NavLink  className="nav-link text-light" to="/all-guides">All Guides</NavLink>
+              </li>
+            
+
+
+
+              <Route exact path='/' component={Home} />
+              <Route path='/all-guides' component={AllGuides} />
+              <Route path='/guide-page' component={GuidePage} />
+          </ul>   
+
+  )}
+
+
+
+
+let GuidePage = (props) => {
+  console.log(this.location);
+return(
+  <div>
+      <div className="card text-center bg-white">
+          <div className="card-body">
+              
+          </div>
+      </div>
+  </div>
+  )}
+
+  
+  let AllGuides = (props) => {
+    const listItems = guides.map((book, index) =>
+    <div key={index} className="card container mt-2 mb-2 bg-white" style={{width: 18 + 'rem'}}>
+    <div className="card-body">
+      <h5 className="card-title">" {book.title} "</h5>
+      <p className="card-text">Type: {book.type}</p>
+      <p className="card-text">Price: {book.price}</p>
+      <button><Link to={{ pathname: '/guide-page', query: {title: book.title} }}>Guide Info</Link></button>
+    </div>
+  </div>
+  );
+  return (
+    <BrowserRouter>
+    <div className="container d-flex flex-column text-center justify-conent-center mt-5 ">
+      <h3 className="text-light">Guide Books</h3>
+      <div className="container d-flex flex-wrap justify-conent-center  mt-5">
+          {listItems}
+      </div>
+
+      
+    </div>
+    </BrowserRouter>
+  );
+}
+
+
+
+
+let Home = () => {
+  return(
+    <div className="container mt-5">
+        <div className="text-center text-light">
+            <h1>HOME</h1>
         </div>
-      </div>
-    )
-    return (
-      <div className="d-flex flex-wrap container">
-        {listItems}
-      </div>
-    )
-  }
+    </div>
+)}
+  
 
-  let Home = () => {
-    return (
-      <h1>
-        HOME
-      </h1>
-    )
-  }
 
   class Guides extends React.Component {
     render() {
@@ -93,19 +139,25 @@ import {
               </li>
             </ul>
 
-            <hr />
-            <div className="text-center">
-              <div>
-                <Route exact path='/' component={Home} />
-              </div>
-              <div className="d-dlex justify-content-center">
-                <Route  path='/all-guides' component={GuideTemplate} />
-              </div>
-            </div>
-          </div>
-        </Router>
-      )
-    }
-  }
+
+class Guides extends Component {
+
+render() {
+
+  return(
+    <BrowserRouter>
+      <div className="container ">
+        <div className="d-flex flex-column">
+
+          <Nav />
+
+        </div>
+      </div>
+    </BrowserRouter>
+  )}
+}
+
+
+
 
 export default Guides;
